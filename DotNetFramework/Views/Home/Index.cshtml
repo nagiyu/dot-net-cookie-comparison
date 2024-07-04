@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home Page</title>
+</head>
+<body>
+    <div>
+        <form method="post" action="/Home/CreateCookie">
+            <input type="submit" value="Create Cookie" />
+        </form>
+        <br /><br />
+        <div>
+            <p>Cookie Value: @ViewBag.CookieValue</p>
+        </div>
+    </div>
+</body>
+</html>
