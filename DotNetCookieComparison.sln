@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetFramework", "DotNetFramework\DotNetFramework.csproj", "{C203377F-F37B-4D63-A894-718C14EC6B79}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetCore", "DotNetCore\DotNetCore.csproj", "{C8F8824D-199C-4198-B16E-39B13989548B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C203377F-F37B-4D63-A894-718C14EC6B79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C203377F-F37B-4D63-A894-718C14EC6B79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C203377F-F37B-4D63-A894-718C14EC6B79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8F8824D-199C-4198-B16E-39B13989548B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8F8824D-199C-4198-B16E-39B13989548B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8F8824D-199C-4198-B16E-39B13989548B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8F8824D-199C-4198-B16E-39B13989548B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

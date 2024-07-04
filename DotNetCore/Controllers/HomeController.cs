@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DotNetFramework.Controllers
 {
@@ -11,10 +11,9 @@ namespace DotNetFramework.Controllers
         public ActionResult Index()
         {
             // 既存のクッキーを確認
-            HttpCookie myCookie = Request.Cookies["MyTestCookie"];
-            if (myCookie != null)
+            if (Request.Cookies.TryGetValue("MyTestCookie", out string cookieValue))
             {
-                ViewBag.CookieValue = myCookie.Value;
+                ViewBag.CookieValue = cookieValue;
             }
             else
             {
@@ -28,13 +27,14 @@ namespace DotNetFramework.Controllers
         public ActionResult CreateCookie()
         {
             // クッキーの作成と設定
-            HttpCookie myCookie = new HttpCookie("MyTestCookie");
-            myCookie.Value = "Hello, this is a test cookie!";
-            myCookie.Expires = DateTime.Now.AddSeconds(10); // 10秒後に期限切れ
-            Response.Cookies.Set(myCookie);
+            var cookieOptions = new CookieOptions
+            {
+                Expires = DateTime.Now.AddSeconds(10) // 10秒後に期限切れ
+            };
+            Response.Cookies.Append("MyTestCookie", "Hello, this is a test cookie!", cookieOptions);
 
             // クッキーの内容をViewBagに設定
-            ViewBag.CookieValue = myCookie.Value;
+            ViewBag.CookieValue = "Hello, this is a test cookie!";
 
             return View("Index");
         }
