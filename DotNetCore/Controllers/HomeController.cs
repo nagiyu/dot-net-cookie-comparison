@@ -1,14 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using DotNetCore.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
-namespace DotNetFramework.Controllers
+namespace DotNetCore.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        private readonly ILogger<HomeController> _logger;
+
+        public HomeController(ILogger<HomeController> logger)
+        {
+            _logger = logger;
+        }
+
+        public IActionResult Index()
         {
             // 既存のクッキーを確認
             if (Request.Cookies.TryGetValue("MyTestCookie", out string cookieValue))
@@ -24,7 +29,7 @@ namespace DotNetFramework.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateCookie()
+        public IActionResult CreateCookie()
         {
             // クッキーの作成と設定
             var cookieOptions = new CookieOptions
@@ -39,18 +44,15 @@ namespace DotNetFramework.Controllers
             return View("Index");
         }
 
-        public ActionResult About()
+        public IActionResult Privacy()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
